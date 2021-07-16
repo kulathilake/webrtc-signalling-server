@@ -23,7 +23,9 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@types/node-cache": "^4.2.5",
     "@types/websocket": "^1.0.3",
+    "node-cache": "^5.1.2",
     "websocket": "^1.0.34"
   }
 }
