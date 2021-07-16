@@ -21,10 +21,31 @@ export type ConnectionRequest = {
     targetUserId: string;
     sourceUserId: string;
     sourceConnection: connection;
+    candidates: RTCIceCandidate[]
+}
+
+// Inbound Signals
+export type InboundSignal<T> = {
+    type: 'candidate' | 'description' | 'init' | 'terminate' | 'info';
+    payload?: T ; 
+    from?: string;
+}
+
+// Two Way Signals
+export type PeerICEExchange = {
+    candidate: RTCIceCandidate;
+    to: string;
+    from: string;
+}
+
+export type PeerICESession = {
+    description: RTCSessionDescription;
+    to: string;
+    from: string;
 }
 
 // Outbound Signals
-export type Signal<T> = {
+export type OutboundSignal<T> = {
     type: 'candidate' | 'desc' | 'connection' | 'info';
     payload: T;
 }
@@ -32,4 +53,8 @@ export type Signal<T> = {
 export type PeerConnection = {
     user: string;
     state: 'ready' | 'pending' | 'disconnected';
+}
+
+export type Info = {
+    message: string
 }
